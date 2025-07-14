@@ -1,5 +1,4 @@
-# Use Node.js {{cookiecutter.node_version}} slim image
-FROM node:{{cookiecutter.node_version}}-slim as base
+FROM node:22.12.0-slim as base
 
 # Set environment variables
 ENV NODE_ENV=production

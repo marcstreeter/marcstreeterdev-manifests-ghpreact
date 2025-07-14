@@ -1,12 +1,11 @@
 {
     "project_name": "marcstreeterdev-{{cookiecutter.project_type}}",
     "project_slug": "{{ cookiecutter.project_name.lower().replace('-', '_').replace(' ', '_') }}",
-    "project_description": "A {{cookiecutter.project_type}} service for marcstreeterdev",
     "project_type": "react",
+    "project_description": "A {{cookiecutter.project_type}} frontend by marcstreeterdev",
     "author_name": "Marc Streeter",
     "author_email": "marc@marcstreeter.dev",
     "github_username": "marcstreeter",
-    "node_version": "18",
     "app_port": ["3000", "What port should the React app run on?"],
     "storybook_port": ["6006", "What port should Storybook run on?"],
     "tilt_app_port": ["17300", "What port should Tilt forward the React app to?"],
