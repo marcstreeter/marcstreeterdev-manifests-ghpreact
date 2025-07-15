@@ -1,4 +1,4 @@
-# Default values for {{cookiecutter.project_slug}}
+# Default values for {{ project_slug }}
 # This is a YAML-formatted file.
 
 # Global configuration
@@ -10,7 +10,7 @@ replicaCount: 1
 
 # Image configuration
 image:
-  repository: {{cookiecutter.project_slug}}-app
+  repository: {{ project_slug }}-app
   tag: latest
   pullPolicy: IfNotPresent
 
@@ -24,8 +24,8 @@ buildArgs:
 # Service configuration
 service:
   type: ClusterIP
-  port: {{cookiecutter.app_port}}
-  targetPort: {{cookiecutter.app_port}}
+  port: {{ app_port }}
+  targetPort: {{ app_port }}
 
 # Ingress configuration
 ingress:
@@ -33,7 +33,7 @@ ingress:
   className: ""
   annotations: {}
   hosts:
-    - host: {{cookiecutter.project_slug}}.local
+    - host: {{ project_slug }}.local
       paths:
         - path: /
           pathType: Prefix
@@ -55,8 +55,8 @@ env: []
 dev:
   enabled: true
   service:
-    port: {{cookiecutter.app_port}}
-    targetPort: {{cookiecutter.app_port}}
+    port: {{ app_port }}
+    targetPort: {{ app_port }}
   buildArgs:
     ENABLE_TESTING: true
     ENABLE_LINTING: true

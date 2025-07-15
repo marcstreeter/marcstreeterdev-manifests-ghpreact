@@ -1,8 +1,8 @@
-# {{cookiecutter.project_name}}
+# {{ project_name }}
 
-{{cookiecutter.project_description}}
+{{ project_description }}
 
-Completely update this file to suit {{cookiecutter.project_name}}!
+Completely update this file to suit {{ project_name }}!
 
 ## Requirements
 

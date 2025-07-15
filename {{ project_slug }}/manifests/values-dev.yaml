@@ -1,4 +1,4 @@
-# Development values for {{cookiecutter.project_slug}}
+# Development values for {{ project_slug }}
 
 # Global configuration
 global:
@@ -19,5 +19,5 @@ resources:
 
 # Use development service configuration
 service:
-  port: {{cookiecutter.app_port}}
-  targetPort: {{cookiecutter.app_port}}
+  port: {{ app_port }}
+  targetPort: {{ app_port }}

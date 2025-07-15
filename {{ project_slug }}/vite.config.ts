@@ -11,11 +11,11 @@ export default defineConfig({
     },
   },
   server: {
-    port: {{cookiecutter.dev_port}},
+    port: {{ dev_port }},
     host: true, // Needed for Docker
   },
   preview: {
-    port: {{cookiecutter.preview_port}},
+    port: {{ preview_port }},
     host: true,
   },
   build: {

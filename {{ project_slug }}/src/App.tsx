@@ -26,7 +26,7 @@ function App() {
           />
           <Box>
             <Typography variant="h3" component="h1" gutterBottom>
-              {{cookiecutter.project_name}}
+              {{ project_name }}
             </Typography>
             <Typography variant="body1" color="text.secondary">
               Welcome to your new React application! This template includes examples of components, 

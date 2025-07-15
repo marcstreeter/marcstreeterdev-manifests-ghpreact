@@ -1,9 +1,9 @@
-# {{cookiecutter.project_name}} justfile
+# {{ project_name }} justfile
 # Run with: just <command>
 
 # Variables
 namespace := "default"
-deployment := "{{cookiecutter.project_slug}}"
+deployment := "{{ project_slug }}"
 kubexec := "kubectl -n " + namespace + " exec deploy/" + deployment
 
 # Default recipe to run when no arguments are provided
@@ -48,7 +48,7 @@ setup: _check-docker _check-tilt _check-kubectl
 start: _check-docker _check-tilt _check-kubectl
     @echo "Starting development environment with Tilt..."
     @echo "This will start the app in a container with live reloading."
-    @echo "Access the app at: http://localhost:{{cookiecutter.tilt_port}}"
+    @echo "Access the app at: http://localhost:{{ tilt_port }}"
     @echo "Access Storybook at: http://localhost:6006"
     @echo "Press Ctrl+C to stop"
     tilt up -vvv
