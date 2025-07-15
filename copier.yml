@@ -13,7 +13,7 @@ project_type:
   type: str
   help: Type of project
   default: react
-  _hidden: true
+  when: false
 
 project_description:
   type: str
@@ -39,11 +39,13 @@ app_port:
   type: int
   help: What port should the React app run on?
   default: 3000
+  when: false
 
 storybook_port:
   type: int
   help: What port should Storybook run on?
   default: 6006
+  when: false
 
 tilt_app_port:
   type: int
@@ -54,46 +56,6 @@ tilt_storybook_port:
   type: int
   help: What port should Tilt forward Storybook to?
   default: 17306
-
-use_docker:
-  type: bool
-  help: Use Docker?
-  default: true
-
-use_helm:
-  type: bool
-  help: Use Helm?
-  default: true
-
-use_tilt:
-  type: bool
-  help: Use Tilt?
-  default: true
-
-use_just:
-  type: bool
-  help: Use justfile?
-  default: true
-
-use_pre_commit:
-  type: bool
-  help: Use pre-commit?
-  default: true
-
-use_tests:
-  type: bool
-  help: Include tests?
-  default: true
-
-use_linting:
-  type: bool
-  help: Include linting?
-  default: true
-
-use_debugging:
-  type: bool
-  help: Include debugging?
-  default: true
 
 open_source_license:
   type: str
