@@ -1,10 +1,10 @@
-import { describe, it, expect, vi } from 'vitest';
-import { 
-  formatCurrency, 
-  capitalizeWords, 
-  debounce, 
-  isValidEmail, 
-  truncateString 
+import { describe, expect, it, vi } from 'vitest';
+import {
+  capitalizeWords,
+  debounce,
+  formatCurrency,
+  isValidEmail,
+  truncateString,
 } from './example-utils';
 
 describe('formatCurrency', () => {
@@ -115,4 +115,4 @@ describe('truncateString', () => {
   it('handles suffix longer than max length', () => {
     expect(truncateString('Test', 2, '...')).toBe('...');
   });
-}); 
+});

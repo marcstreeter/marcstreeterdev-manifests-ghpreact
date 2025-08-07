@@ -1,6 +1,6 @@
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import { describe, it, expect, vi } from 'vitest';
+import { fireEvent, render, screen } from '@testing-library/react';
+import type React from 'react';
+import { describe, expect, it, vi } from 'vitest';
 import { ThemeProvider } from '../ThemeProvider';
 import { ExampleComponent } from './ExampleComponent';
 
@@ -15,55 +15,35 @@ describe('ExampleComponent', () => {
   });
 
   it('renders with description', () => {
-    renderWithTheme(
-      <ExampleComponent 
-        title="Test Title" 
-        description="Test description" 
-      />
-    );
+    renderWithTheme(<ExampleComponent title="Test Title" description="Test description" />);
     expect(screen.getByText('Test Title')).toBeInTheDocument();
     expect(screen.getByText('Test description')).toBeInTheDocument();
   });
 
   it('renders action button when onAction is provided', () => {
     const mockAction = vi.fn();
-    renderWithTheme(
-      <ExampleComponent 
-        title="Test Title" 
-        onAction={mockAction} 
-      />
-    );
-    
+    renderWithTheme(<ExampleComponent title="Test Title" onAction={mockAction} />);
+
     const button = screen.getByRole('button', { name: 'Take Action' });
     expect(button).toBeInTheDocument();
-    
+
     fireEvent.click(button);
     expect(mockAction).toHaveBeenCalledTimes(1);
   });
 
   it('shows disabled state when disabled is true', () => {
     const mockAction = vi.fn();
-    renderWithTheme(
-      <ExampleComponent 
-        title="Test Title" 
-        onAction={mockAction}
-        disabled={true}
-      />
-    );
-    
+    renderWithTheme(<ExampleComponent title="Test Title" onAction={mockAction} disabled={true} />);
+
     const button = screen.getByRole('button', { name: 'Disabled' });
     expect(button).toBeDisabled();
   });
 
   it('uses secondary variant when specified', () => {
     renderWithTheme(
-      <ExampleComponent 
-        title="Test Title" 
-        onAction={() => {}}
-        variant="secondary"
-      />
+      <ExampleComponent title="Test Title" onAction={() => {}} variant="secondary" />
     );
-    
+
     const button = screen.getByRole('button');
     expect(button).toHaveClass('MuiButton-outlined'); // secondary variant class
   });
@@ -88,4 +68,4 @@ describe('ExampleComponent', () => {
     renderWithTheme(<ExampleComponent title="Test Title" />);
     expect(screen.queryByAltText('Example Icon')).not.toBeInTheDocument();
   });
-}); 
+});

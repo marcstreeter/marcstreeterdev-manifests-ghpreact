@@ -1,16 +1,25 @@
-import React, { createContext, useContext, useMemo, useState } from 'react';
-import { ThemeProvider as MuiThemeProvider, createTheme, CssBaseline, IconButton } from '@mui/material';
+import type React from 'react';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
+import {
+  CssBaseline,
+  createTheme,
+  IconButton,
+  ThemeProvider as MuiThemeProvider,
+} from '@mui/material';
+import { createContext, useContext, useMemo, useState } from 'react';
 
 // Context for theme mode
-const ColorModeContext = createContext({ toggleColorMode: () => {}, mode: 'light' as 'light' | 'dark' });
+const ColorModeContext = createContext({
+  toggleColorMode: () => {},
+  mode: 'light' as 'light' | 'dark',
+});
 
 export const useColorMode = () => useContext(ColorModeContext);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [mode, setMode] = useState<'light' | 'dark'>(
-    window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
   );
 
   const colorMode = useMemo(
@@ -55,8 +64,13 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 export const ThemeToggleButton: React.FC = () => {
   const { mode, toggleColorMode } = useColorMode();
   return (
-    <IconButton sx={{ ml: 1 }} onClick={toggleColorMode} color="inherit" aria-label="toggle dark mode">
+    <IconButton
+      sx={{ ml: 1 }}
+      onClick={toggleColorMode}
+      color="inherit"
+      aria-label="toggle dark mode"
+    >
       {mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
     </IconButton>
   );
-}; 
+};

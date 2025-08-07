@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.1.1/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.1.3/schema.json",
   "linter": {
     "enabled": true,
     "rules": {
@@ -12,6 +12,9 @@
       },
       "style": {
         "useConst": "error"
+      },
+      "a11y": {
+        "noSvgWithoutTitle": "off"
       }
     }
   },
@@ -30,6 +33,22 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "includes": ["**/*.{js,jsx,ts,tsx,json,css,md}"]
-  }
-} 
+    "includes": ["**/*.{js,jsx,ts,tsx,json,css}", "!dist/**", "!node_modules/**"]
+  },
+  "overrides": [
+    {
+      "includes": ["**/*.test.{js,jsx,ts,tsx}"],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "noUnusedVariables": "off",
+            "noUnusedFunctionParameters": "off"
+          },
+          "suspicious": {
+            "noExplicitAny": "off"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -16,4 +16,4 @@ export const Primary: Story = {
     variant: 'primary',
     showIcon: true,
   },
-}; 
+};

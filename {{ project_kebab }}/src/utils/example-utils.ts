@@ -8,7 +8,7 @@
  * @param currency - The currency code (default: 'USD')
  * @returns Formatted currency string
  */
-export const formatCurrency = (amount: number, currency: string = 'USD'): string => {
+export const formatCurrency = (amount: number, currency = 'USD'): string => {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency,
@@ -23,7 +23,7 @@ export const formatCurrency = (amount: number, currency: string = 'USD'): string
 export const capitalizeWords = (str: string): string => {
   return str
     .split(' ')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
     .join(' ');
 };
 
@@ -33,12 +33,12 @@ export const capitalizeWords = (str: string): string => {
  * @param delay - The delay in milliseconds
  * @returns Debounced function
  */
-export const debounce = <T extends (...args: any[]) => any>(
+export const debounce = <T extends (...args: unknown[]) => unknown>(
   func: T,
   delay: number
 ): ((...args: Parameters<T>) => void) => {
   let timeoutId: NodeJS.Timeout;
-  
+
   return (...args: Parameters<T>) => {
     clearTimeout(timeoutId);
     timeoutId = setTimeout(() => func(...args), delay);
@@ -63,12 +63,12 @@ export const isValidEmail = (email: string): boolean => {
  * @returns Truncated string
  */
 export const truncateString = (
-  str: string, 
-  maxLength: number, 
-  suffix: string = '...'
+  str: string,
+  maxLength: number,
+  suffix = '...'
 ): string => {
   if (str.length <= maxLength) {
     return str;
   }
   return str.slice(0, maxLength - suffix.length) + suffix;
-}; 
+};

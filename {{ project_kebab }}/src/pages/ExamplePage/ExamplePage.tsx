@@ -1,13 +1,7 @@
-import React, { useState } from 'react';
-import { 
-  Container, 
-  Typography, 
-  Box, 
-  Grid, 
-  Paper,
-  Button,
-  Alert
-} from '@mui/material';
+import { Alert, Box, Button, Container, Paper, Typography } from '@mui/material';
+import Grid from '@mui/material/Grid';
+import type React from 'react';
+import { useState } from 'react';
 import { ExampleComponent } from '../../components/ExampleComponent';
 
 export const ExamplePage: React.FC = () => {
@@ -15,9 +9,9 @@ export const ExamplePage: React.FC = () => {
   const [counter, setCounter] = useState(0);
 
   const handleAction = () => {
-    setCounter(prev => prev + 1);
+    setCounter((prev) => prev + 1);
     setShowAlert(true);
-    
+
     // Hide alert after 3 seconds
     setTimeout(() => setShowAlert(false), 3000);
   };
@@ -27,7 +21,7 @@ export const ExamplePage: React.FC = () => {
       <Typography variant="h4" component="h1" gutterBottom>
         Example Page
       </Typography>
-      
+
       <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
         This is an example page demonstrating how to structure page-level components.
       </Typography>
@@ -39,7 +33,7 @@ export const ExamplePage: React.FC = () => {
       )}
 
       <Grid container spacing={3}>
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Paper sx={{ p: 3 }}>
             <Typography variant="h6" gutterBottom>
               Interactive Component
@@ -51,14 +45,12 @@ export const ExamplePage: React.FC = () => {
               variant="primary"
             />
             <Box sx={{ mt: 2 }}>
-              <Typography variant="body2">
-                Clicks: {counter}
-              </Typography>
+              <Typography variant="body2">Clicks: {counter}</Typography>
             </Box>
           </Paper>
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Paper sx={{ p: 3 }}>
             <Typography variant="h6" gutterBottom>
               Static Component
@@ -73,14 +65,10 @@ export const ExamplePage: React.FC = () => {
       </Grid>
 
       <Box sx={{ mt: 4, textAlign: 'center' }}>
-        <Button 
-          variant="outlined" 
-          onClick={() => setCounter(0)}
-          disabled={counter === 0}
-        >
+        <Button variant="outlined" onClick={() => setCounter(0)} disabled={counter === 0}>
           Reset Counter
         </Button>
       </Box>
     </Container>
   );
-}; 
+};

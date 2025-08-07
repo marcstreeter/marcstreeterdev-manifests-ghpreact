@@ -1,5 +1,5 @@
-import React from 'react';
-import { Box, Typography, Button, Avatar } from '@mui/material';
+import { Avatar, Box, Button, Typography } from '@mui/material';
+import type React from 'react';
 import ExampleIcon from '../../assets/icons/example-icon.svg';
 
 export interface ExampleComponentProps {
@@ -31,8 +31,8 @@ export const ExampleComponent: React.FC<ExampleComponentProps> = ({
     >
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
         {showIcon && (
-          <Avatar 
-            src={ExampleIcon} 
+          <Avatar
+            src={ExampleIcon}
             alt="Example Icon"
             sx={{ width: 32, height: 32, bgcolor: 'primary.main' }}
           />
@@ -41,23 +41,18 @@ export const ExampleComponent: React.FC<ExampleComponentProps> = ({
           {title}
         </Typography>
       </Box>
-      
+
       {description && (
         <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
           {description}
         </Typography>
       )}
-      
+
       {onAction && (
-        <Button
-          variant={variant}
-          onClick={onAction}
-          disabled={disabled}
-          size="small"
-        >
+        <Button variant={variant === 'primary' ? 'contained' : 'outlined'} onClick={onAction} disabled={disabled} size="small">
           {disabled ? 'Disabled' : 'Take Action'}
         </Button>
       )}
     </Box>
   );
-}; 
+};

@@ -10,4 +10,4 @@ export const ASSET_PATHS = {
   images: {
     logo: '/src/assets/images/example-logo.png',
   },
-} as const; 
+} as const;
