@@ -73,4 +73,4 @@ export const ThemeToggleButton: React.FC = () => {
       {mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
     </IconButton>
   );
-};
+}; 

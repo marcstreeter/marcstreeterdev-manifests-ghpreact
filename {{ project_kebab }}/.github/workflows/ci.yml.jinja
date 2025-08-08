@@ -20,10 +20,7 @@ jobs:
         run: docker run --rm {{ project_slug }}-app npm run lint
 
       - name: Run unit tests in container
-        run: docker run --rm {{ project_slug }}-app npm run test:unit
-      
-      - name: Run storybook tests in container
-        run: docker run --rm {{ project_slug }}-app npm run test:storybook
+        run: docker run --rm {{ project_slug }}-app npm run test
 
       - name: Build application in container
         run: docker run --rm {{ project_slug }}-app npm run build 

@@ -48,7 +48,7 @@ export default defineConfig({
           name: 'unit',
           environment: 'jsdom',
           setupFiles: ['src/setupTests.ts'],
-          exclude: ['**/*.stories.*', 'node_modules/**/*'],
+          exclude: ['node_modules/**/*'],  // TODO re-enable when working ['**/*.stories.*', 'node_modules/**/*'],
         },
       },
       {

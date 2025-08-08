@@ -2,9 +2,8 @@ import { Avatar, Box, Button, Container, Paper, Typography } from '@mui/material
 // Import the example assets
 import ExampleIcon from './assets/icons/example-icon.svg';
 import ExampleLogo from './assets/images/example-logo.png';
-import { ExampleComponent } from './components/ExampleComponent';
-import { MainLayoutProvider } from './components/MainLayoutProvider';
-import { ThemeProvider } from './components/ThemeProvider';
+import { LayoutProvider } from './providers/LayoutProvider';
+import { ThemeProvider } from './providers/ThemeProvider';
 import { capitalizeWords, formatCurrency } from './utils/example-utils';
 
 function App() {
@@ -15,7 +14,7 @@ function App() {
 
   return (
     <ThemeProvider>
-      <MainLayoutProvider>
+      <LayoutProvider>
         <Container maxWidth="lg" sx={% raw %}{{ py: 4 }}{% endraw %}>
           {/* Header with logo and icon */}
           <Box sx={% raw %}{{ display: 'flex', alignItems: 'center', gap: 2, mb: 4 }}{% endraw %}>
@@ -98,26 +97,24 @@ function App() {
             </Typography>
           </Box>
 
-          {/* Example component usage */}
+          {/* Example components section - placeholder for your actual components */}
           <Box sx={% raw %}{{ mb: 4 }}{% endraw %}>
             <Typography variant="h5" gutterBottom>
-              Example Components
+              Components Available
             </Typography>
-            <Box sx={% raw %}{{ display: 'grid', gap: 2, gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' } }}{% endraw %}>
-              <ExampleComponent
-                title="Interactive Example"
-                description="This component has an action button that triggers an alert."
-                onAction={handleExampleAction}
-                variant="primary"
-                showIcon={true}
-              />
-              <ExampleComponent
-                title="Static Example"
-                description="This component is static with no actions."
-                variant="secondary"
-                showIcon={true}
-              />
-            </Box>
+            <Paper sx={% raw %}{{ p: 3 }}{% endraw %}>
+              <Typography variant="body2">
+                Your components are located in <code>src/components/</code>. Current components include:
+                Header, Footer, Nav, and MainLayoutProvider.
+              </Typography>
+              <Button
+                variant="contained"
+                onClick={handleExampleAction}
+                sx={% raw %}{{ mt: 2 }}{% endraw %}
+              >
+                Example Action
+              </Button>
+            </Paper>
           </Box>
 
           {/* Link to example page */}
@@ -173,7 +170,7 @@ function App() {
             </Typography>
           </Box>
         </Container>
-      </MainLayoutProvider>
+      </LayoutProvider>
     </ThemeProvider>
   );
 }

@@ -38,18 +38,19 @@ spec:
             limits:
               memory: {{ .Values.resources.limits.memory }}
               cpu: {{ .Values.resources.limits.cpu }}
-        - name: storybook
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          command: ["npm", "run", "storybook", "--", "--no-open", "--port", "{{ .Values.deployment.storybook.containerPort }}", "--host", "0.0.0.0"]
-          ports:
-            - name: {{ .Values.deployment.storybook.containerPortName }}
-              containerPort: {{ .Values.deployment.storybook.containerPort }}
-              protocol: TCP
-          resources:
-            requests:
-              memory: 512Mi
-              cpu: 250m
-            limits:
-              memory: 1Gi
-              cpu: 500m
+        # TODO: Add storybook deployment (it is buggy for now for some reason unknown)
+        # - name: storybook
+        #   image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        #   imagePullPolicy: {{ .Values.image.pullPolicy }}
+        #   command: ["npm", "run", "storybook", "--", "--no-open", "--port", "{{ .Values.deployment.storybook.containerPort }}", "--host", "0.0.0.0"]
+        #   ports:
+        #     - name: {{ .Values.deployment.storybook.containerPortName }}
+        #       containerPort: {{ .Values.deployment.storybook.containerPort }}
+        #       protocol: TCP
+        #   resources:
+        #     requests:
+        #       memory: 512Mi
+        #       cpu: 250m
+        #     limits:
+        #       memory: 1Gi
+        #       cpu: 500m

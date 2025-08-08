@@ -1,19 +1,24 @@
 import { Alert, Box, Button, Container, Paper, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import type React from 'react';
-import { useState } from 'react';
-import { ExampleComponent } from '../../components/ExampleComponent';
+import { useEffect, useState } from 'react';
 
 export const ExamplePage: React.FC = () => {
   const [showAlert, setShowAlert] = useState(false);
   const [counter, setCounter] = useState(0);
 
-  const handleAction = () => {
+  useEffect(() => {
+    if (showAlert) {
+      const timer = setTimeout(() => {
+        setShowAlert(false);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [showAlert]);
+
+  const handleTakeAction = () => {
     setCounter((prev) => prev + 1);
     setShowAlert(true);
-
-    // Hide alert after 3 seconds
-    setTimeout(() => setShowAlert(false), 3000);
   };
 
   return (
@@ -38,14 +43,11 @@ export const ExamplePage: React.FC = () => {
             <Typography variant="h6" gutterBottom>
               Interactive Component
             </Typography>
-            <ExampleComponent
-              title="Click Counter"
-              description="This component demonstrates interactivity with state management."
-              onAction={handleAction}
-              variant="primary"
-            />
             <Box sx={{ mt: 2 }}>
               <Typography variant="body2">Clicks: {counter}</Typography>
+              <Button variant="contained" onClick={handleTakeAction} sx={{ mt: 2 }}>
+                Take Action
+              </Button>
             </Box>
           </Paper>
         </Grid>
@@ -55,11 +57,6 @@ export const ExamplePage: React.FC = () => {
             <Typography variant="h6" gutterBottom>
               Static Component
             </Typography>
-            <ExampleComponent
-              title="Information Card"
-              description="This is a static component without any actions."
-              variant="secondary"
-            />
           </Paper>
         </Grid>
       </Grid>

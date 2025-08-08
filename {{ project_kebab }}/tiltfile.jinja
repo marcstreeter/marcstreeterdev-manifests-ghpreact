@@ -54,7 +54,7 @@ k8s_resource(
     # HOST:PORT, CONTAINER:PORT
     port_forwards=[
         port_forward({{ tilt_app_port }}, {{ app_port }}, name="{{ project_name }} ui"),
-        port_forward({{ tilt_storybook_port }}, {{ storybook_port }}, name="{{ project_name }} storybook"),
+        # port_forward({{ tilt_storybook_port }}, {{ storybook_port }}, name="{{ project_name }} storybook"), # TODO re-enable when it works
     ],
     links=[
         link("http://{}:30080".format(ip), "External URL ({})".format(ip))

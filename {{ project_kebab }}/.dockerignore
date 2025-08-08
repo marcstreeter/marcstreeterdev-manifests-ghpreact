@@ -47,21 +47,21 @@ LICENSE
 *.md
 docs/
 
-# Development configuration
-.editorconfig
-.prettierrc*
-.eslintrc*
-*.tsbuildinfo
-vitest.unit.config.ts
-vite.config.d.ts
-vitest.config.d.ts
+# # Development configuration
+# .editorconfig
+# .prettierrc*
+# .eslintrc*
+# *.tsbuildinfo
+# vitest.unit.config.ts
+# vite.config.d.ts
+# vitest.config.d.ts
 
-# Testing files
-**/*.test.*
-**/*.spec.*
-setupTests.ts
-test-setup.ts
-test-utils.tsx
+# # Testing files
+# **/*.test.*
+# **/*.spec.*
+# setupTests.ts
+# test-setup.ts
+# test-utils.tsx
 
 # Development tools
 lefthook.yml

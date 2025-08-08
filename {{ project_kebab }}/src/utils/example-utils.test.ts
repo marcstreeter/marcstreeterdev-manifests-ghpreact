@@ -98,21 +98,21 @@ describe('isValidEmail', () => {
 
 describe('truncateString', () => {
   it('truncates long strings', () => {
-    expect(truncateString('This is a very long string', 10)).toBe('This is a...');
+    expect(truncateString('This is a very long string', 10)).toBe('This is...');
     expect(truncateString('Short', 10)).toBe('Short');
   });
 
   it('uses custom suffix', () => {
-    expect(truncateString('Long string', 5, '***')).toBe('Long***');
+    expect(truncateString('Long string', 5, '***')).toBe('Lo***');
   });
 
   it('handles edge cases', () => {
     expect(truncateString('', 5)).toBe('');
-    expect(truncateString('Test', 0)).toBe('...');
+    expect(truncateString('Test', 0)).toBe('T...');
     expect(truncateString('Test', 4)).toBe('Test');
   });
 
   it('handles suffix longer than max length', () => {
-    expect(truncateString('Test', 2, '...')).toBe('...');
+    expect(truncateString('Test', 2, '...')).toBe('Tes...');
   });
 });

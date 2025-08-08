@@ -1,7 +1,7 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import type React from 'react';
 import { describe, expect, it, vi } from 'vitest';
-import { ThemeProvider } from '../../components/ThemeProvider';
+import { ThemeProvider } from '../../providers/ThemeProvider';
 import { ExamplePage } from './ExamplePage';
 
 const renderWithTheme = (component: React.ReactElement) => {
@@ -36,7 +36,9 @@ describe('ExamplePage', () => {
     renderWithTheme(<ExamplePage />);
 
     const actionButton = screen.getByRole('button', { name: 'Take Action' });
-    fireEvent.click(actionButton);
+    act(() => {
+      fireEvent.click(actionButton);
+    });
 
     expect(screen.getByText('Clicks: 1')).toBeInTheDocument();
   });
@@ -45,7 +47,9 @@ describe('ExamplePage', () => {
     renderWithTheme(<ExamplePage />);
 
     const actionButton = screen.getByRole('button', { name: 'Take Action' });
-    fireEvent.click(actionButton);
+    act(() => {
+      fireEvent.click(actionButton);
+    });
 
     expect(screen.getByText(/Action completed! Counter is now 1/)).toBeInTheDocument();
   });
@@ -54,15 +58,17 @@ describe('ExamplePage', () => {
     renderWithTheme(<ExamplePage />);
 
     const actionButton = screen.getByRole('button', { name: 'Take Action' });
-    fireEvent.click(actionButton);
+    act(() => {
+      fireEvent.click(actionButton);
+    });
 
     expect(screen.getByText(/Action completed!/)).toBeInTheDocument();
 
-    vi.advanceTimersByTime(3000);
-
-    await waitFor(() => {
-      expect(screen.queryByText(/Action completed!/)).not.toBeInTheDocument();
+    act(() => {
+      vi.advanceTimersByTime(3000);
     });
+
+    expect(screen.queryByText(/Action completed!/)).not.toBeInTheDocument();
   });
 
   it('resets counter when reset button is clicked', () => {
@@ -70,12 +76,16 @@ describe('ExamplePage', () => {
 
     // First increment the counter
     const actionButton = screen.getByRole('button', { name: 'Take Action' });
-    fireEvent.click(actionButton);
+    act(() => {
+      fireEvent.click(actionButton);
+    });
     expect(screen.getByText('Clicks: 1')).toBeInTheDocument();
 
     // Then reset it
     const resetButton = screen.getByRole('button', { name: 'Reset Counter' });
-    fireEvent.click(resetButton);
+    act(() => {
+      fireEvent.click(resetButton);
+    });
     expect(screen.getByText('Clicks: 0')).toBeInTheDocument();
   });
 
@@ -90,7 +100,9 @@ describe('ExamplePage', () => {
     renderWithTheme(<ExamplePage />);
 
     const actionButton = screen.getByRole('button', { name: 'Take Action' });
-    fireEvent.click(actionButton);
+    act(() => {
+      fireEvent.click(actionButton);
+    });
 
     const resetButton = screen.getByRole('button', { name: 'Reset Counter' });
     expect(resetButton).not.toBeDisabled();
