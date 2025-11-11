@@ -124,6 +124,12 @@ check-fix: _check-kubectl
     @echo "Fixing Biome issues..."
     {% raw %}{{kubexec}}{% endraw %} -- npm run check:fix
 
+# lifecycle hook called by other justfiles
+hook-post-git-init:
+    @echo "Handling all functions for post git initialization..."
+    just setup
+    just check-fix-local
+
 check-fix-local:
     @echo "Fixing Biome issues (locally)..."
     npm run check:fix
